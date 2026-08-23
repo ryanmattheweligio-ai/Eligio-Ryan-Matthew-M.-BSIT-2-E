@@ -1,0 +1,19 @@
+using System; 
+
+class Program 
+{ 
+    static void Main(string[] args) 
+    { 
+        string name = "Dexter"; 
+        char middle_initial = 'A'; 
+        int age = 20; 
+        double pounds = 150; 
+        bool mode = true; 
+        
+        Console.WriteLine(name); 
+        Console.WriteLine(middle_initial); 
+        Console.WriteLine(age); 
+        Console.WriteLine(pounds); 
+        Console.WriteLine(mode); 
+	} 
+}
