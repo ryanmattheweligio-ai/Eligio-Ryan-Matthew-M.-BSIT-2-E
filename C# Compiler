@@ -15,5 +15,38 @@ class Program
         Console.WriteLine(age); 
         Console.WriteLine(pounds); 
         Console.WriteLine(mode); 
+        
+        Console.WriteLine("Hi My name is " + name + ", And i am " + age + " years old, and i am selling " + pounds + " and that's " + mode + " and also my initial is " + middle_initial + ".");
+
+       
+        
 	} 
+}
+
+Activity 3
+//InputFunctions
+//Console.Write("What is your name?");
+//string name =Console.ReadLine()
+//Console.WriteLine("My name is"+name+ ".")
+//CODE PROPER for INPUT  FUNCTION CALLING THE FIVE DATA TYPES
+
+using System;
+
+class Program
+{
+	static void Main(string[] args)
+    {
+		Console.Write("What is your name? ");
+		string name = Console.ReadLine();
+		Console.Write("How old are you? ");
+		int age = Convert.ToInt32(Console.ReadLine());
+		Console.Write("How much money do you have (e.g. 19.99)? ");
+		double price = double.Parse(Console.ReadLine());
+		Console.Write("What letter grade did you get in school (e.g A)? ");
+		char grade = Convert.ToChar(Console.ReadLine());
+		Console.Write("Are you a student? (true/false) ");
+		bool Student = bool.Parse(Console.ReadLine());
+
+        Console.WriteLine("My name is "+name+", I am "+age+" years old, I have $"+price+" in my pocket ,I got a "+grade+" in school, and it is "+Student+" that i am currently a student.");
+    }
 }
