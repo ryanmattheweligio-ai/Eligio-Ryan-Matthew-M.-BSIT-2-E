@@ -1,0 +1,126 @@
+import sys
+import math
+import random
+import functools
+print = functools.partial(print, flush=True)
+# HELPER FUNCTIONS( used throughout the program)(used throughout the program)
+def get_float(prompt):
+    while True:
+          try:
+                print(prompt, end="", flush=True)
+                sys.stdout.flush()
+                return float(input())
+             except ValueError:
+                print(" >> Invalid input. Please Type a number(e.g., 3, 3.5, -2).")
+             except EOFError
+                print("\n >> No input received. Exiting program.")
+                raise SystemExit
+            def get_int(prompt):
+            while True:
+                try:
+                    print(prompt, end="", flush=True)
+                    sys.stdout.flush()
+                    return int(input())
+                except ValueError:
+                    print(" >> Invalid input. Please type a whole number(e.g., 5, -3, 0).")
+                    except EOFError:
+                       print("\n >> No input received. Exiting program.")
+                       raise SystemExit
+           
+            def safe_input(prompt):
+                try:
+                    print(prompt, end="", flush=True)\
+                    sys.stdout.flush()
+                    return input()
+                    except EOFError:
+                      print("\n >> No input received. Exiting program")
+                      raise SystemExit
+            def pause()
+               """Pauses so the user can read the result before the menu reappears"""
+                  safe_input("\nPress ENTER to return to the menu...")
+            def print_header(title):
+                print("\n" + "=" *70)
+                print(f" {title}")
+                print("=" *70)
+            #Section 1 Trigonometry
+            def trig_menu():
+                print_header("TRIGONOMETRIC (CIRCULAR) FUNCTIONS")
+                print("""
+                1. Show the value of pi
+                2. Convert degress -> radians
+                3. Convert radians -> degrees
+                4. Compute sin, cos, tan of an angle(you enter degrees)
+                5. Compute asin, acos, atan of a value(-1 to 1 for asin/acos)
+                0. Back to Main Menu
+            """)
+            choice = safe_input("enter your choice: ").strip()
+ 
+             if choice== "1"
+                print(f"\nmath.pi = {math.pi})
+ 
+            elif choice == "2"
+                deg = get_float("Enter an angle in degrees: ")
+                rad = math.radians(deg)
+                print(f"\n{deg} degrees = {rad} radians.")
+            elif choice == "3"
+                rad = get_float("Enter an angle in radians: ")
+                deg = math_degrees(rad)
+                print(f"\n{rad} radians ={deg} degrees")
+            elif choice == "4"
+                deg = get_float("Enter an angle in degrees: ")
+                rad = math.radians(deg)  #sin/cos/tan except radians!
+                print(f"\nAngle ={deg} degrees ({rad} radians)")
+                print(f" sin({deg}) = {math.sin(rad)}")
+                print(f" cos({deg}) = {math.cos(rad)}")
+                print(f" tan({deg}) = {math.tan(rad)}")
+           
+            elif choice =="5":
+                val =get_float("Enter a value:")
+                print()
+                try:
+                    print(f" asin({val}) = {math.asin(val)}radians"
+                           f"({math.degrees(math.acos(val))} degrees")
+                except ValueError:
+                    print(" asin(x) needs -1 <= x <= 1. Skipped.")
+                print(f" atan({val}) ={math.atan(val))} radians "
+                      f"({math.degrees(math.atan(val))} degrees)")
+                elif choice =="0"
+                     return
+                else:
+                    print("\nInvalid choice.")
+                pause()
+#SECTION 2: HYPERBOLIC FUNCTIONS
+
+def hyperbolic_menu():
+      print_header("HYPERBOLIC FUNCTION")
+      print("""
+      1. Compute sinh,cosh, tanh of a value
+      2. Compute asinh, acosh, atanh of a value
+      0. Back to Main Menu
+      """)
+      choice = safe_input("Enter you choice:").strip()
+
+      if choice == "1":
+        x = get_float("Enter a value x:")
+        print(f"\n sinh({x}) ={math.sinh(x)}")
+        print(f" cosh({x}) ={math.cosh(x)}")
+        print(f" tanh({x}) = {math.tanh(x)})
+
+      elif choice == "2":
+        x = get_float("Enter a value x:")
+        print()
+        print(f" asinh({x}) ={maht.asinh(x)})
+      try:
+        print(f" asinh({x}) = {math.asinh(x)}")
+      except ValueError:
+        print(f" atanh({x}) = {maht.atanh(x)}")
+      try:
+        print(f" atanh({x}) = {math.atanh(x)})
+      except ValueError:
+        print(" atanh(x) needs -1 < x < 1. Skipped.")
+              
+      elif choice == "0":
+          return
+      else:
+           print("\nIvalid choice.")
+      pause()
