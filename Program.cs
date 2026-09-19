@@ -1,65 +1,70 @@
 ﻿using System;
-namespace CharacterLesson
+using System.ComponentModel.DataAnnotations;
+
+class Program
 {
-    class Program
+    static void Main()
     {
-        const int GridWidth = 10;
-        const int GridHeight = 10;
+        //Display the @ and * player symbol and star symbol in a specific place
+        int PlayerX = 5;
+        int PlayerY = 5;
 
-        static void Main(string[] args)
+        int StarX = 10;
+        int StarY = 5;
 
+        // declare score once so it's in scope for the whole method
+        int score = 0;
+        Random rand = new Random();
+
+        while (true)
         {
-            int playerX = GridWidth / 2;
-            int playerY = GridHeight / 2;
-            bool running = true;
 
-            Console.WriteLine("Move with W/A/S/D, then press Enter. Type Q to quit.");
+            Console.Clear();
 
-            while (running)
+            //Display the player symbol
+            Console.SetCursorPosition(PlayerX, PlayerY);
+            Console.Write("@");
+            //Display the star symbol
+            Console.SetCursorPosition(StarX, StarY);
+            Console.Write("*");
+            //Wait for user input before closing the console window
+
+            //Display the Score at Top Left Corner
+            Console.SetCursorPosition(112, 0);
+            Console.Write("Score: " + score);
+
+
+            //Player movement
+            ConsoleKey key = Console.ReadKey(true).Key;
+            if (key == ConsoleKey.W)
             {
-                DrawGrid(playerX, playerY);
-
-                Console.Write("Move: ");
-                string input = Console.ReadKey().KeyChar.ToString();
-                
-
-                switch (input)
-                {
-                    case "w": 
-                       playerY = Math.Max(0, playerY - 1); 
-                       break;
-                    case "s": 
-                        playerY = Math.Min(GridHeight - 1, playerY + 1); 
-                        break;
-                    case "a": 
-                        playerX = Math.Max(0, playerX - 1); 
-                        break;
-                    case "d": 
-                        playerX = Math.Min(GridWidth - 1, playerX + 1); 
-                        break;
-                    case "q": 
-                        running = false; 
-                        break;
-                    default:
-                        Console.WriteLine("Unknown command. Use W, A, S, D, or Q.");
-                        break;
-                }
+                PlayerY--;
+            }
+            else if (key == ConsoleKey.S)
+            {
+                PlayerY++;
+            }
+            else if (key == ConsoleKey.A)
+            {
+                PlayerX--;
+            }
+            else if (key == ConsoleKey.D)
+            {
+                PlayerX++;
+            }
+            else if (key == ConsoleKey.Escape)
+            {
+                Environment.Exit(0);
+            }
+            //Did the player collect the star?
+            if (PlayerX == StarX && PlayerY == StarY)
+            {
+                //Increase the score
+                score++;
+                StarX = rand.Next(0, Console.WindowWidth);
+                StarY = rand.Next(0, Console.WindowHeight-1);
             }
 
-            Console.WriteLine("Thanks for playing!");
         }
-        static void DrawGrid(int playerX, int playerY)
-        {
-            try { Console.Clear(); } catch { }
-
-            for (int y = 0; y < GridHeight; y++)
-            {
-                for (int x = 0; x < GridWidth; x++)
-                {
-                    Console.Write(x == playerX && y == playerY ? '@' : '.');
-                }
-                Console.WriteLine();
-            }
-        }
-    }
+    }   
 }
